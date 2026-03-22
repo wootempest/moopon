@@ -793,6 +793,35 @@ body {
   max-width: 700px;
 }
 
+.detail-synopsis img,
+.hero-synopsis img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.detail-synopsis a,
+.hero-synopsis a {
+  color: var(--purple-400);
+  text-decoration: none;
+}
+
+.detail-synopsis a:hover,
+.hero-synopsis a:hover {
+  text-decoration: underline;
+}
+
+.detail-synopsis p,
+.hero-synopsis p {
+  margin-bottom: 8px;
+}
+
+.detail-synopsis p:last-child,
+.hero-synopsis p:last-child {
+  margin-bottom: 0;
+}
+
 /* Loading Animation */
 .loader {
   display: flex;

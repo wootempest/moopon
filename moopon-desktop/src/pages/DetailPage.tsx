@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Clock, Film, Calendar } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import AddToList from '../components/AddToList';
 import type { MalAnime } from '../services/malApi';
 
@@ -152,14 +154,16 @@ export default function DetailPage({ anime, onBack }: DetailPageProps) {
                 >
                     Özet
                 </motion.h2>
-                <motion.p
+                <motion.div
                     className="detail-synopsis"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.5 }}
                 >
-                    {anime.synopsis || 'Ozet bilgisi mevcut degil.'}
-                </motion.p>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {anime.synopsis || 'Ozet bilgisi mevcut degil.'}
+                    </ReactMarkdown>
+                </motion.div>
             </motion.div>
         </motion.div>
     );

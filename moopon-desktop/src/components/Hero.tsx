@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star, Flame } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import AddToList from './AddToList';
 import type { MalAnime } from '../services/malApi';
 
@@ -102,14 +104,16 @@ export default function Hero({ anime, onSelect }: HeroProps) {
                     {anime.media_type && <span>{anime.media_type.toUpperCase()}</span>}
                     {anime.start_season && <span>{anime.start_season.season} {anime.start_season.year}</span>}
                 </motion.div>
-                <motion.p
+                <motion.div
                     className="hero-synopsis"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.85, duration: 0.55, ease: 'easeOut' }}
                 >
-                    {anime.synopsis}
-                </motion.p>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {anime.synopsis}
+                    </ReactMarkdown>
+                </motion.div>
                 <motion.div
                     className="hero-actions"
                     initial={{ y: 20, opacity: 0 }}
