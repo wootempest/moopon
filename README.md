@@ -1,7 +1,7 @@
-# moopon
+# Moopon
 
 <p align="center">
-  <img src="icon.png" alt="moopon Logo" width="128" />
+  <img src="icon.png" alt="Moopon Logo" width="128" />
 </p>
 
 <p align="center">
