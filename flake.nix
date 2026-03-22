@@ -45,7 +45,7 @@
               chmod +x $out/bin/moopon.AppImage
             '';
 
-            meta = with pkgs; {
+            meta = with pkgs.lib; {
               description = "Moopon - Premium Anime List Manager";
               homepage = "https://moopon.app";
               license = licenses.mit;
