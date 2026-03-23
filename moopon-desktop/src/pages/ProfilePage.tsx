@@ -36,7 +36,7 @@ export default function ProfilePage({ onLogout }: ProfilePageProps) {
     };
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setLanguage(e.target.value as 'en' | 'tr');
+        setLanguage(e.target.value as 'en' | 'tr' | 'ja' | 'fr' | 'de' | 'ru' | 'es' | 'it');
     };
 
     if (loading) {
@@ -146,8 +146,14 @@ export default function ProfilePage({ onLogout }: ProfilePageProps) {
                                 onChange={handleLanguageChange}
                                 className="language-select"
                             >
-                                <option value="en">{t.profile.english}</option>
-                                <option value="tr">{t.profile.turkish}</option>
+                                <option value="en">English</option>
+                                <option value="tr">Türkçe</option>
+                                <option value="ja">日本語</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ru">Русский</option>
+                                <option value="es">Español</option>
+                                <option value="it">Italiano</option>
                             </select>
                         </motion.div>
                     </div>
