@@ -17,7 +17,7 @@ export const it: TranslationKeys = {
     nav: {
         home: 'Home',
         search: 'Cerca',
-        myList: 'La Mia Lista',
+        myList: 'La mia lista',
         topAnime: 'Top Anime',
         seasonal: 'Stagionale',
         profile: 'Profilo',
@@ -97,7 +97,7 @@ export const it: TranslationKeys = {
         results: 'Risultati',
     },
     list: {
-        title: 'La Mia Lista Anime',
+        title: 'La mia lista anime',
         empty: 'La tua lista è vuota.',
         emptyHint: 'Aggiungi anime dalle pagine di esplorazione.',
         watching: 'Guardando',
