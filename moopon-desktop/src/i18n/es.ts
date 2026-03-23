@@ -35,7 +35,7 @@ export const es: TranslationKeys = {
         topRated: 'Mejor valorados',
         seasonal: 'Anime de temporada',
         seeAll: 'Ver todo',
-        navigate: 'navegar',
+        navigate: 'Navegar',
         enterSelect: 'Enter para seleccionar',
     },
     seasons: {
