@@ -1387,11 +1387,13 @@ body {
   background: linear-gradient(145deg, rgba(25, 5, 55, 0.95), rgba(13, 0, 24, 0.98));
   border: 1px solid var(--bg-glass-border);
   border-radius: 24px;
-  padding: 48px;
+  padding: 32px;
   text-align: center;
-  max-width: 420px;
-  width: 90%;
+  max-width: 520px;
+  width: 95%;
   box-shadow: var(--glow-purple-strong);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .language-modal-icon {
@@ -1408,7 +1410,7 @@ body {
 }
 
 .language-modal h2 {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 8px;
@@ -1416,28 +1418,34 @@ body {
 
 .language-modal p {
   color: var(--text-secondary);
-  margin-bottom: 32px;
-  font-size: 15px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
 
 .language-options {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
   justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .language-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .language-option {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 24px 32px;
+  gap: 8px;
+  padding: 16px 12px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.25s ease;
-  flex: 1;
 }
 
 .language-option:hover {
@@ -1448,12 +1456,12 @@ body {
 }
 
 .language-flag {
-  font-size: 36px;
+  font-size: 32px;
   line-height: 1;
 }
 
 .language-name {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }

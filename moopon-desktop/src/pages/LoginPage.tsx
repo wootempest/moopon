@@ -2,11 +2,22 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { LogIn, Loader2 } from 'lucide-react';
 import { startLogin } from '../services/malApi';
-import { useI18n } from '../i18n';
+import { useI18n, type Language } from '../i18n';
 
 interface LoginPageProps {
     onLoginSuccess: () => void;
 }
+
+const LANGUAGES: { code: Language; label: string }[] = [
+    { code: 'en', label: 'English' },
+    { code: 'tr', label: 'Türkçe' },
+    { code: 'ja', label: '日本語' },
+    { code: 'fr', label: 'Français' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'ru', label: 'Русский' },
+    { code: 'es', label: 'Español' },
+    { code: 'it', label: 'Italiano' },
+];
 
 const containerVariants = {
     hidden: {},
@@ -23,7 +34,8 @@ const itemVariants = {
 export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { t } = useI18n();
+    const [showLangMenu, setShowLangMenu] = useState(false);
+    const { t, language, setLanguage } = useI18n();
 
     const handleLogin = async () => {
         setLoading(true);
@@ -46,6 +58,8 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
             setLoading(false);
         }
     };
+
+    const currentLang = LANGUAGES.find(l => l.code === language) || LANGUAGES[0];
 
     return (
         <div style={{
@@ -177,6 +191,78 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
                             </>
                         )}
                     </motion.button>
+
+                    {/* Language Selector */}
+                    <div style={{ marginTop: 20, position: 'relative' }}>
+                        <motion.button
+                            onClick={() => setShowLangMenu(!showLangMenu)}
+                            whileHover={{ scale: 1.01 }}
+                            whileTap={{ scale: 0.99 }}
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 6,
+                                padding: '8px 16px',
+                                background: 'transparent',
+                                border: '1px solid var(--border-subtle)',
+                                borderRadius: 8,
+                                cursor: 'pointer',
+                                color: 'var(--text-secondary)',
+                                fontSize: 13,
+                                fontWeight: 500,
+                            }}
+                        >
+                            <span>{currentLang.label}</span>
+                        </motion.button>
+
+                        {showLangMenu && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                style={{
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    marginTop: 8,
+                                    background: 'var(--bg-card)',
+                                    border: '1px solid var(--border-subtle)',
+                                    borderRadius: 12,
+                                    padding: 8,
+                                    minWidth: 140,
+                                    zIndex: 100,
+                                    boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+                                }}
+                            >
+                                {LANGUAGES.map((lang) => (
+                                    <motion.button
+                                        key={lang.code}
+                                        onClick={() => {
+                                            setLanguage(lang.code);
+                                            setShowLangMenu(false);
+                                        }}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        style={{
+                                            display: 'block',
+                                            width: '100%',
+                                            padding: '10px 12px',
+                                            background: lang.code === language ? 'var(--bg-card-hover)' : 'transparent',
+                                            border: 'none',
+                                            borderRadius: 8,
+                                            cursor: 'pointer',
+                                            color: 'var(--text-primary)',
+                                            fontSize: 13,
+                                            fontWeight: lang.code === language ? 600 : 400,
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {lang.label}
+                                    </motion.button>
+                                ))}
+                            </motion.div>
+                        )}
+                    </div>
                 </motion.div>
             </motion.div>
         </div>

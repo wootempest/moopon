@@ -1,7 +1,7 @@
 {
   "name": "moopon",
   "private": true,
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Moopon - Premium Anime List Manager",
   "author": "Moopon Team <moopon@example.com>",
   "homepage": "https://moopon.app",
@@ -43,13 +43,22 @@
       ],
       "icon": "icon.png"
     },
-    "nsis": {
+"nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Moopon",
+      "license": "../LICENSE",
+      "artifactName": "${productName}-Setup-${version}-${arch}.${ext}",
+      "deleteAppDataOnUninstall": false,
+      "differentialPackage": false,
+      "include": "installer.nsh"
     }
   },
   "dependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.60.0",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.400.0",
     "react": "^19.2.0",
